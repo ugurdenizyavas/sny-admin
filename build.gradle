@@ -1,9 +1,7 @@
 //======================================================================
 // PROJECT
 //======================================================================
-
-version = '1.0-SNAPSHOT'
-group = 'com.sony.ebs.octopus3'
+group='com.sony.ebs.octopus3'
 
 //======================================================================
 // REPOSITORIES
@@ -11,22 +9,19 @@ group = 'com.sony.ebs.octopus3'
 
 buildscript {
     repositories {
-        mavenLocal()
-        maven { url "https://mvn.sony-europe.com/content/groups/global" }
         maven { url 'http://repo.spring.io/libs-snapshot' }
-        jcenter()
-        mavenCentral()
+        maven { url "https://oss.sonatype.org/content/groups/public" }
+        mavenLocal()
     }
     dependencies {
+        classpath 'com.github.townsfolk:gradle-release:1.2'
         classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.2.0.BUILD-SNAPSHOT'
     }
 }
 
 repositories {
-    mavenLocal()
-    maven { url 'https://mvn.sony-europe.com/content/groups/global' }
-    maven { url 'http://repo.spring.io/libs-snapshot' }
     mavenCentral()
+    maven { url 'http://repo.spring.io/libs-snapshot' }
 }
 
 //======================================================================
@@ -37,6 +32,7 @@ apply plugin: 'java'
 apply plugin: 'groovy'
 apply plugin: 'idea'
 apply plugin: 'spring-boot'
+apply plugin: 'release'
 
 //======================================================================
 // CONFIGURATIONS
@@ -58,9 +54,8 @@ idea {
 
 jar {
     baseName = 'octopus3-admin-app'
-    version =  '0.1.0'
+    version = '0.1.0'
 }
-
 
 //======================================================================
 // DEPENDENCIES
@@ -70,7 +65,10 @@ dependencies {
     compile 'org.codehaus.groovy:groovy-all:2.3.6'
     compile 'org.codehaus.groovy.modules.http-builder:http-builder:0.7.1'
     compile "org.springframework.boot:spring-boot-starter-web:1.1.6.RELEASE"
-	compile "org.thymeleaf:thymeleaf-spring4:2.1.3.RELEASE"
-	compile "nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:1.2.5"
-    compile 'com.sony.ebs.octopus3:octopus3-commons:1.2-SNAPSHOT'
+    compile "org.thymeleaf:thymeleaf-spring4:2.1.3.RELEASE"
+    compile "nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:1.2.5"
 }
+
+//======================================================================
+// TASKS
+//======================================================================
