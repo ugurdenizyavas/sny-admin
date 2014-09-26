@@ -15,11 +15,21 @@ import org.springframework.web.bind.annotation.RequestParam
 @RequestMapping('/repository')
 class RepositoryController {
 
-    Map repositories = [
-            base: "http://service.octopus.sony.eu",
+    def repositories = [
             amazon: [
-                name: "Get Product Detail",
-                endpoint: "/product/:product"
+                [base: "http://localhost/amazon"],
+                [
+                    name: "Amazon Product Service",
+                    endpoint: "/product/:product"
+                ],
+                [
+                    name: "Amazon Delta Service",
+                    endpoint: "/delta/:time"
+                ],
+                [
+                    name: "Amazon Repository Service",
+                    endpoint: "/repo/:locale"
+                ],
             ]
     ]
 
